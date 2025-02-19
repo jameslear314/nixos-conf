@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 
-{
+{ 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -59,7 +59,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = false;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -78,15 +78,15 @@
     modesetting.enable = true;
 
     powerManagement = {
-	# Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-	# Enable this if you have graphical corruption issues or application crashes after waking
-	# up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
-	# of just the bare essentials.
-	enable = false;
+      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+      # Enable this if you have graphical corruption issues or application crashes after waking
+      # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
+      # of just the bare essentials.
+      enable = false;
 
-	# Fine-grained power management. Turns off GPU when not in use.
-	# Experimental and only works on modern Nvidia GPUs (Turing or newer).
-	finegrained = false;
+      # Fine-grained power management. Turns off GPU when not in use.
+      # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+      finegrained = false;
     };
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
@@ -132,6 +132,13 @@
     pciutils
     vscode-with-extensions
     wget
+
+    # audio
+    jack2
+    jack_capture
+    libjack2
+    qjackctl
+    pavucontrol
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -12,42 +12,56 @@
   users.users.james = {
     isNormalUser = true;
     description = "James Lear";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "jackaudio" ];
     packages = with pkgs; [
-      # Development #
-      ## rust
+      ##### AI #####
+      lmstudio
+      jan
+
+      ##### Browsers #####
+      brave
+      chromium
+      opera
+
+      ##### Development #####
+      #### rust
       cargo
       cargo-ui
       cargo-rr
       cargo-apk
       cargo-ndk
-      corepack_latest
-      ## docker
+
+      #### js
+      nodejs
+      npm-check
+      nrr ### npm, yarn, etc
+
+      #### docker
       docker
       docker-compose
       docker-ls
       docker-slim
-      git
-      nodejs
-      python313
-      vim
-      virtualenv
-      vscode-with-extensions
 
-      # Quality of life *
+      #### generic
+      git
+      vim
+      vscode-with-extensions
+      pkgs.vscode-extensions.jnoortheen.nix-ide
+
+
+      #### python
+      python313
+      virtualenv
+
+      ##### Quality of life #####
       obsidian
       tlrc
       nvidia-docker
       nvtopPackages.full
 
-      # Browsers #
-      brave
-      chromium
-      opera
-
-      # AI #
-      lmstudio
-      jan
+      ##### Meetings #####
+      #/teams ### not on linux
+      #/zoom-us ### not on linux
     ];
   };
 }
