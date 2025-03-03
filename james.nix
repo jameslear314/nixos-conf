@@ -43,10 +43,18 @@
       docker-slim
 
       #### generic
+      gcc_multi
       git
       vim
-      vscode-with-extensions
-      pkgs.vscode-extensions.jnoortheen.nix-ide
+      (vscode-with-extensions.override {
+        vscodeExtensions = with vscode-extensions; [
+          eamodio.gitlens
+          jnoortheen.nix-ide
+          ms-azuretools.vscode-docker
+          ms-python.python
+          rust-lang.rust-analyzer
+        ];
+      }) # ref: https://stackoverflow.com/questions/54811067/how-can-i-install-extension-of-vscode
 
 
       #### python
